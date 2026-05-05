@@ -21,8 +21,8 @@ pwd=$(pwd)
 export DMPDIR=${DMPDIR:-$pwd}
 export PACKAGEROOT=${PACKAGEROOT:-/lfs/h1/ops/prod/packages}
 export gfs_ver=${gfs_ver:-v15.0.0}
-export HOMEgfs=${HOMEgfs:-${PACKAGEROOT}/gfs.${gfs_ver}}
-export FIXgfs=${FIXgfs:-$HOMEgfs/fix}   
+export HOMEglobalbalHOMHOMEglobalbalgfs:-${PACKAGEROOT}/gfs.${gfs_ver}}
+export FIXgfs=${FIXgfs:-$HOMEglobalbal/fix}
 export FIXorog=${FIXorog:-$FIXgfs/orog}
 
 ntiles=${ntiles:-6}
@@ -30,8 +30,8 @@ DONST=${DONST:-"NO"}
 COMIN=${COMIN:-$pwd}
 COMOUT=${COMOUT:-$pwd}
 
-CYCLESH=${CYCLESH:-$HOMEgfs/ush/global_cycle.sh}
-export CYCLEXEC=${CYCLEXEC:-$HOMEgfs/exec/global_cycle}
+CYCLESH=${CYCLESH:-$HOMEglobal/ush/global_cycle.sh}
+export CYCLEXEC=${CYCLEXEC:-$HOMEglobal/exec/global_cycle}
 export OMP_NUM_THREADS_CY=${OMP_NUM_THREADS_CY:-24}
 export APRUNCY=${APRUNCY:-"time"}
 export VERBOSE=${VERBOSE:-"YES"}
@@ -92,7 +92,7 @@ for n in $(seq 1 $ntiles); do
     ln -fs $FIXorog/${CASE}/C${CRES}.mx${OCNRES}_oro_data.tile${n}.nc   $DATA/fnorog.00$n
   fi
 
-  if [[ "$GCYCLE_DO_SNOWINCR" == ".true." ]] ; then  
+  if [[ "$GCYCLE_DO_SNOWINCR" == ".true." ]] ; then
         ln -fs $COMIN/$PDY.${cyc}0000.xainc.tile${n}.nc      $DATA/snow_xainc.00$n
   fi
 

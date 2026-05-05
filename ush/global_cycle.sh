@@ -14,7 +14,7 @@
 # 2014-11-30  xuli  add NST_ANL
 # 2017-08-19  Gayno  updates for FV3GFS.
 #
-# Usage:  global_cycle.sh 
+# Usage:  global_cycle.sh
 #
 #   Imported Shell Variables:
 #     CASE          Model resolution.  Defaults to C768.
@@ -26,13 +26,13 @@
 #     LONB_CASE     j-dimension of the global climatology files. NOT the
 #                   j-dimension of the model grid. Computed from CASE by default.
 #     OCNRES        Ocean grid resolution. '100' is one degree.
-#     HOMEgfs       Directory for gfs.  Default is 
+#     HOMEglobal       Directory for gfs.  Default is
 #                   PACKAGEROOT/gfs.v15.0.0.
 #     PACKAGEROOT   Location of gfs package.
-#     FIXgfs        Directory for fixed data. Default is $HOMEgfs/fix.
+#     FIXgfs        Directory for fixed data. Default is $HOMEglobal/fix.
 #     FIXorog       Directory for fixed orography data. Default is $FIXgfs/orog
 #     EXECgfs       Directory of the program executable.  Defaults to
-#                   $HOMEgfs/exec
+#                   $HOMEglobal/exec
 #     DATA          Working directory
 #                   (if nonexistent will be made, used and deleted)
 #                   Defaults to current working directory
@@ -135,14 +135,14 @@
 #     use_ufo       Adjust sst and soil substrate temperature for differences
 #                   between the filtered and unfiltered terrain.  Default is true.
 #     DONST         Process NST records when using NST model.  Default is 'no'.
-#     DO_SFCCYCLE   Call sfcsub routine 
+#     DO_SFCCYCLE   Call sfcsub routine
 #     GCYCLE_DO_SOILINCR   Call routine to add soil increments
 #     GCYCLE_DO_SNOWINCR   Call routine to add snow inrcements
-#                   
+#
 #     zsea1/zsea2   When running with NST model, this is the lower/upper bound
 #                   of depth of sea temperature.  In whole mm.
 #     MAX_TASKS_CY  Normally, program should be run with a number of mpi tasks
-#                   equal to the number of cubed-sphere tiles being processed. 
+#                   equal to the number of cubed-sphere tiles being processed.
 #                   However, the current parallel scripts may over-specify the
 #                   number of tasks.  Set this variable to not process
 #                   any ranks greater than max_tasks-1.  Default is '99999',
@@ -226,9 +226,9 @@ OCNRES=${OCNRES:-100}
 #  Directories.
 gfs_ver=${gfs_ver:-v15.0.0}
 PACKAGEROOT=${PACKAGEROOT:-/lfs/h1/ops/prod/packages}
-HOMEgfs=${HOMEgfs:-${PACKAGEROOT}/gfs_ver.${gfs_ver}}
-EXECgfs=${EXECgfs:-$HOMEgfs/exec}
-FIXgfs=${FIXgfs:-$HOMEgfs/fix}
+HOMEglobal=${HOMEglobalbal:-${PACKAGEROOT}/gfs_ver.${gfs_ver}}
+EXECgfs=${EXECgfs:-$HOMEglobal/exec}
+FIXgfs=${FIXgfs:-$HOMEglobal/fix}
 FIXorog=${FIXorog:-$FIXgfs/orog}
 DATA=${DATA:-$(pwd)}
 COMIN=${COMIN:-$(pwd)}
@@ -390,7 +390,7 @@ cat << EOF > fort.37
   NST_FILE="$NST_FILE",
   DO_SOILINCR=$GCYCLE_DO_SOILINCR,
   DO_SNOWINCR=$GCYCLE_DO_SNOWINCR,
-  lsoil_incr=$LSOIL_INCR, 
+  lsoil_incr=$LSOIL_INCR,
  /
 EOF
 

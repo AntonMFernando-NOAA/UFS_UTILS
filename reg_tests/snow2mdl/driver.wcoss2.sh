@@ -4,7 +4,7 @@
 #
 # Run snow2mdl consistency tests on WCOSS2.
 #
-# Set $DATA_ROOT to your working directory.  Set the project code 
+# Set $DATA_ROOT to your working directory.  Set the project code
 # and queue as appropriate.
 #
 # Invoke the script as follows:  ./$script
@@ -43,7 +43,7 @@ if [ "$UPDATE_BASELINE" = "TRUE" ]; then
 fi
 
 export HOMEreg=/lfs/h2/emc/nems/noscrub/emc.nems/UFS_UTILS/reg_tests/snow2mdl
-export HOMEgfs=$PWD/../..
+export HOMEglobal=$PWD/../..
 
 LOG_FILE=consistency.log
 SUM_FILE=summary.log
