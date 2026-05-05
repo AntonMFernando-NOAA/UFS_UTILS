@@ -22,8 +22,8 @@ export DMPDIR=${DMPDIR:-$pwd}
 export PACKAGEROOT=${PACKAGEROOT:-/lfs/h1/ops/prod/packages}
 export gfs_ver=${gfs_ver:-v15.0.0}
 export HOMEglobalbalHOMHOMEglobalbalgfs:-${PACKAGEROOT}/gfs.${gfs_ver}}
-export FIXgfs=${FIXgfs:-$HOMEglobalbal/fix}
-export FIXorog=${FIXorog:-$FIXgfs/orog}
+export =${:-$HOMEglobalbal/fix}
+export FIXorog=${FIXorog:-$/orog}
 
 ntiles=${ntiles:-6}
 DONST=${DONST:-"NO"}

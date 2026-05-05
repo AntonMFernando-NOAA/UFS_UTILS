@@ -14,7 +14,7 @@ export MAX_TASKS_CY=6
 
 export HOMEglobal=$NWPROD
 
-export FIXgfs=$HOMEreg/fix
+export =$HOMEreg/fix
 
 export CYCLEXEC=$HOMEglobal/exec/global_cycle
 

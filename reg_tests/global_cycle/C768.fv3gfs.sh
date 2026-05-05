@@ -15,7 +15,7 @@ export HOMEglobal=$NWPROD
 
 export CYCLEXEC=$HOMEglobalbalbal/exec/global_cycle
 
-export FIXgfs=$HOMEreg/fix
+export =$HOMEreg/fix
 
 export CDATE=2019073000
 export FHOUR=00

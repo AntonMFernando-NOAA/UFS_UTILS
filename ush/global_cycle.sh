@@ -29,9 +29,9 @@
 #     HOMEglobal       Directory for gfs.  Default is
 #                   PACKAGEROOT/gfs.v15.0.0.
 #     PACKAGEROOT   Location of gfs package.
-#     FIXgfs        Directory for fixed data. Default is $HOMEglobal/fix.
-#     FIXorog       Directory for fixed orography data. Default is $FIXgfs/orog
-#     EXECgfs       Directory of the program executable.  Defaults to
+#             Directory for fixed data. Default is $HOMEglobal/fix.
+#     FIXorog       Directory for fixed orography data. Default is $/orog
+#     EXECglobal       Directory of the program executable.  Defaults to
 #                   $HOMEglobal/exec
 #     DATA          Working directory
 #                   (if nonexistent will be made, used and deleted)
@@ -48,27 +48,27 @@
 #     SUFINP        Suffix to add to input analysis files.
 #                   Defaults to none.
 #     CYCLEXEC      Program executable.
-#                   Defaults to ${EXECgfs}/global_cycle$XC
+#                   Defaults to ${EXECglobal}/global_cycle$XC
 #     FNGLAC        Input glacier climatology GRIB file.
-#                   Defaults to ${FIXgfs}/am/global_glacier.2x2.grb
+#                   Defaults to ${}/am/global_glacier.2x2.grb
 #     FNMXIC        Input maximum sea ice climatology GRIB file.
-#                   Defaults to ${FIXgfs}/am/global_maxice.2x2.grb
+#                   Defaults to ${lobal_maxice.2x2.grb
 #     FNTSFC        Input SST climatology GRIB file.
-#                   Defaults to ${FIXgfs}/am/RTGSST.1982.2012.monthly.clim.grb
+#                   Defaults to ${}/am/RTGSST.1982.2012.monthly.clim.grb
 #     FNSALC        Input Salinity climatology netcdf file.
-#                   Defaults to ${FIXgfs}/am/global_salclm.t1534.3072.1536.nc
+#                   Defaults to ${}/am/global_salclm.t1534.3072.1536.nc
 #     FNSNOC        Input snow climatology GRIB file.
-#                   Defaults to ${FIXgfs}/am/global_snoclim.1.875.grb
+#                   Defaults to ${}/am/global_snoclim.1.875.grb
 #     FNZORC        Input roughness climatology.
 #                   Defaults to igbp vegetation type-based lookup table
 #                   FNVETC must be set to igbp file:
-#                   ${FIXgfs}/am/global_vegtype.igbp.t$JCAP_CASE.$LONB_CASE.$LATB_CASE.rg.grb
+#                   ${}/am/global_vegtype.igbp.t$JCAP_CASE.$LONB_CASE.$LATB_CASE.rg.grb
 #     FNALBC        Input 4-component albedo climatology GRIB file.
 #                   defaults to ${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.snowfree_albedo.tileX.nc
 #     FNALBC2       Input 'facsf' and 'facwf' albedo climatology GRIB file.
 #                   Defaults to ${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.facsf.tileX.nc
 #     FNAISC        Input sea ice climatology GRIB file.
-#                   Defaults to ${FIXgfs}/am/IMS-NIC.blended.ice.monthly.clim.grb
+#                   Defaults to ${}/am/IMS-NIC.blended.ice.monthly.clim.grb
 #     FNTG3C        Input deep soil temperature climatology GRIB file.
 #                   Defaults to ${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.substrate_temperature.tileX.nc
 #     FNVEGC        Input vegetation fraction climatology GRIB file.
@@ -78,7 +78,7 @@
 #     FNSOTC        Input soil type climatology GRIB file.
 #                   Defaults to ${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.soil_type.tileX.nc
 #     FNSMCC        Input soil moisture climatology GRIB file.
-#                   Defaults to ${FIXgfs}/am/global_soilmgldas.statsgo.t$JCAP_CASE.$LONB_CASE.$LATB_CASE.grb
+#                   Defaults to ${}/am/global_soilmgldas.statsgo.t$JCAP_CASE.$LONB_CASE.$LATB_CASE.grb
 #     FNVMNC        Input min veg frac climatology GRIB file.
 #                   Defaults to ${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.vegetation_greenness.tileX.nc
 #     FNVMXC        Input max veg frac climatology GRIB file.
@@ -89,7 +89,7 @@
 #                   Defaults to ${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.maximum_snow_albedo.tileX.nc
 #     FNMSKH        Input high resolution land mask GRIB file.  Use to set mask for
 #                   some of the input climatology fields.  This is NOT the model mask.
-#                   Defaults to ${FIXgfs}/am/global_slmask.t1534.3072.1536.grb
+#                   Defaults to ${}/am/global_slmask.t1534.3072.1536.grb
 #     NST_FILE      GSI file on the gaussian grid containing NST increments.
 #                   Defaults to NULL (no file).
 #     FNTSFA        Input SST analysis GRIB file.
@@ -227,9 +227,9 @@ OCNRES=${OCNRES:-100}
 gfs_ver=${gfs_ver:-v15.0.0}
 PACKAGEROOT=${PACKAGEROOT:-/lfs/h1/ops/prod/packages}
 HOMEglobal=${HOMEglobalbal:-${PACKAGEROOT}/gfs_ver.${gfs_ver}}
-EXECgfs=${EXECgfs:-$HOMEglobal/exec}
-FIXgfs=${FIXgfs:-$HOMEglobal/fix}
-FIXorog=${FIXorog:-$FIXgfs/orog}
+EXECglobal=${EXECglobal:-$HOMEglobal/exec}
+=${:-$HOMEglobal/fix}
+FIXorog=${FIXorog:-$/orog}
 DATA=${DATA:-$(pwd)}
 COMIN=${COMIN:-$(pwd)}
 COMOUT=${COMOUT:-$(pwd)}
@@ -238,7 +238,7 @@ COMOUT=${COMOUT:-$(pwd)}
 XC=${XC:-" "}
 PREINP=${PREINP:-" "}
 SUFINP=${SUFINP:-" "}
-CYCLEXEC=${CYCLEXEC:-$EXECgfs/global_cycle$XC}
+CYCLEXEC=${CYCLEXEC:-$EXECglobal/global_cycle$XC}
 
 CDATE=${CDATE:?}
 FHOUR=${FHOUR:-00}
@@ -275,14 +275,14 @@ MAX_TASKS_CY=${MAX_TASKS_CY:-99999}
 FRAC_GRID=${FRAC_GRID:-.false.}
 COUPLED=${COUPLED:-.false.}
 
-FNGLAC=${FNGLAC:-${FIXgfs}/am/global_glacier.2x2.grb}
-FNMXIC=${FNMXIC:-${FIXgfs}/am/global_maxice.2x2.grb}
-FNTSFC=${FNTSFC:-${FIXgfs}/am/RTGSST.1982.2012.monthly.clim.grb}
-FNSALC=${FNSALC:-${FIXgfs}/am/global_salclm.t1534.3072.1536.nc}
-FNSNOC=${FNSNOC:-${FIXgfs}/am/global_snoclim.1.875.grb}
+FNGLAC=${FNGLAC:-${}/am/global_glacier.2x2.grb}
+FNMXIC=${FNMXIC:-${}/am/global_maxice.2x2.grb}
+FNTSFC=${FNTSFC:-${}/am/RTGSST.1982.2012.monthly.clim.grb}
+FNSALC=${FNSALC:-${}/am/global_salclm.t1534.3072.1536.nc}
+FNSNOC=${FNSNOC:-${}/am/global_snoclim.1.875.grb}
 FNZORC=${FNZORC:-igbp}
-FNAISC=${FNAISC:-${FIXgfs}/am/IMS-NIC.blended.ice.monthly.clim.grb}
-FNSMCC=${FNSMCC:-${FIXgfs}/am/global_soilmgldas.statsgo.t$JCAP_CASE.$LONB_CASE.$LATB_CASE.grb}
+FNAISC=${FNAISC:-${}/am/IMS-NIC.blended.ice.monthly.clim.grb}
+FNSMCC=${FNSMCC:-${}/am/global_soilmgldas.statsgo.t$JCAP_CASE.$LONB_CASE.$LATB_CASE.grb}
 FNALBC2=${FNALBC2:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.facsf.tileX.nc}
 FNTG3C=${FNTG3C:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.substrate_temperature.tileX.nc}
 FNVEGC=${FNVEGC:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.vegetation_greenness.tileX.nc}
@@ -293,7 +293,7 @@ FNABSC=${FNABSC:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.maximum_snow_albedo.
 FNVMNC=${FNVMNC:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.vegetation_greenness.tileX.nc}
 FNVMXC=${FNVMXC:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.vegetation_greenness.tileX.nc}
 FNSLPC=${FNSLPC:-${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.slope_type.tileX.nc}
-FNMSKH=${FNMSKH:-${FIXgfs}/am/global_slmask.t1534.3072.1536.grb}
+FNMSKH=${FNMSKH:-${}/am/global_slmask.t1534.3072.1536.grb}
 NST_FILE=${NST_FILE:-"NULL"}
 FNTSFA=${FNTSFA:-${COMIN}/${PREINP}sstgrb${SUFINP}}
 FNACNA=${FNACNA:-${COMIN}/${PREINP}engicegrb${SUFINP}}
@@ -324,7 +324,7 @@ ln -fs $FNTSFC sstclm
 ln -fs $FNSALC salclm
 
 # If the appropriate resolution fix file is not present, use the highest resolution available (T1534)
-[[ ! -f $FNSMCC ]] && FNSMCC="$FIXgfs/am/global_soilmgldas.statsgo.t1534.3072.1536.grb"
+[[ ! -f $FNSMCC ]] && FNSMCC="$/am/global_soilmgldas.statsgo.t1534.3072.1536.grb"
 
 ################################################################################
 #  Make surface analysis
